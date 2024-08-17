@@ -15,6 +15,8 @@ import {
   MenuItem,
   Select as MUISelect,
   Typography,
+  FormControl,
+  InputLabel,
 } from "@mui/material";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
@@ -69,6 +71,7 @@ const Profile = () => {
             render={({ field }) => {
               return (
                 <TextField
+                  autoFocus
                   label="Full Name"
                   required
                   fullWidth
@@ -165,9 +168,12 @@ const Profile = () => {
             control={control}
             name="gender"
             render={({ field }) => (
-              <div className="flex flex-col !w-full">
+              <FormControl fullWidth>
+                <InputLabel id="gender-label">Gender</InputLabel>
                 <MUISelect
                   {...field}
+                  labelId="gender-label"
+                  id="gender"
                   label="Gender"
                   error={!!errors.gender}
                   className="w-full h-[40px] border rounded-md"
@@ -183,7 +189,7 @@ const Profile = () => {
                     <p>{(errors.gender?.message ?? "") as string}</p>
                   )}
                 </FormHelperText>
-              </div>
+              </FormControl>
             )}
           />
         </Box>
@@ -403,7 +409,8 @@ const Profile = () => {
                     field.onChange(servicesWithTime);
                   }}
                 />
-                {errors.services && (
+                {(errors.services?.root?.message ||
+                  errors.services?.message) && (
                   <Typography
                     component="p"
                     sx={{
@@ -412,7 +419,11 @@ const Profile = () => {
                       fontSize: "12px",
                     }}
                   >
-                    {(errors.services.message ?? "") as string}
+                    {
+                      (errors.services?.root?.message ||
+                        errors.services?.message ||
+                        "") as string
+                    }
                   </Typography>
                 )}
               </>

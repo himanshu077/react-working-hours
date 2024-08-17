@@ -67,7 +67,7 @@ const Schedule = ({
     name: "days",
     defaultValue: defaultValues.days,
   });
-  console.log(days, "days days");
+
   const activeScheduleDays: IDay[] = useMemo(
     () => days.filter((day) => day.active),
     [days]
@@ -209,7 +209,7 @@ const Schedule = ({
       {allowSchedule && (
         <>
           {/* Shop Opening and Closing Time */}
-          <Box className="flex justify-between !gap-6 !w-full !mb-4 !mt-4">
+          <Box className="flex justify-between !w-full !mb-4 !mt-4">
             <FormControlLabel
               label="Shop Opening Time"
               labelPlacement="start"
@@ -220,7 +220,12 @@ const Schedule = ({
                   name="shopOpeningTime"
                   render={({ field }) => (
                     <TimePicker
-                      className="!mx-0 flex !w-full"
+                      className="!mx-0 flex !flex-1"
+                      sx={{
+                        ".MuiInputBase-root": {
+                          height: "40px",
+                        },
+                      }}
                       disabled
                       label="Shop Opening Time"
                       value={dayjs(field.value)}
@@ -242,7 +247,12 @@ const Schedule = ({
                   name="shopClosingTime"
                   render={({ field }) => (
                     <TimePicker
-                      className="!mx-0 !w-full"
+                      sx={{
+                        ".MuiInputBase-root": {
+                          height: "40px",
+                        },
+                      }}
+                      className="!mx-0 flex !flex-1"
                       disabled
                       label="Shop Closing Time"
                       value={dayjs(field.value)}
@@ -269,6 +279,11 @@ const Schedule = ({
                     render={({ field }) => {
                       return (
                         <TimePicker
+                          sx={{
+                            ".MuiInputBase-root": {
+                              height: "40px",
+                            },
+                          }}
                           className="ml-4"
                           label="Start Time"
                           value={dayjs(field.value)}
@@ -299,6 +314,11 @@ const Schedule = ({
                     name="allDays.endTime"
                     render={({ field }) => (
                       <TimePicker
+                        sx={{
+                          ".MuiInputBase-root": {
+                            height: "40px",
+                          },
+                        }}
                         className="ml-4"
                         label="End Time"
                         value={dayjs(field.value)}
@@ -391,6 +411,11 @@ const Schedule = ({
                       name={`days.${index}.startTime`}
                       render={({ field }) => (
                         <TimePicker
+                          sx={{
+                            ".MuiInputBase-root": {
+                              height: "40px",
+                            },
+                          }}
                           label="Start Time"
                           value={dayjs(field.value)}
                           onChange={(value) => {
@@ -414,6 +439,11 @@ const Schedule = ({
                       name={`days.${index}.endTime`}
                       render={({ field }) => (
                         <TimePicker
+                          sx={{
+                            ".MuiInputBase-root": {
+                              height: "40px",
+                            },
+                          }}
                           label="End Time"
                           value={dayjs(field.value)}
                           onChange={(value) => {
@@ -639,6 +669,11 @@ const Schedule = ({
                     name="allDays.breakStartTime"
                     render={({ field }) => (
                       <TimePicker
+                        sx={{
+                          ".MuiInputBase-root": {
+                            height: "40px",
+                          },
+                        }}
                         className="ml-4"
                         label="Start Time"
                         value={dayjs(field.value)}
@@ -676,6 +711,11 @@ const Schedule = ({
                     name="allDays.breakEndTime"
                     render={({ field }) => (
                       <TimePicker
+                        sx={{
+                          ".MuiInputBase-root": {
+                            height: "40px",
+                          },
+                        }}
                         className="ml-4"
                         label="End Time"
                         value={dayjs(field.value)}
@@ -804,6 +844,11 @@ const Schedule = ({
                                 name={`days.${dayIndex}.breakStartTime`}
                                 render={({ field }) => (
                                   <TimePicker
+                                    sx={{
+                                      ".MuiInputBase-root": {
+                                        height: "40px",
+                                      },
+                                    }}
                                     className="ml-4"
                                     label="Start Time"
                                     value={dayjs(field.value)}
@@ -848,6 +893,11 @@ const Schedule = ({
                                 name={`days.${dayIndex}.breakEndTime`}
                                 render={({ field }) => (
                                   <TimePicker
+                                    sx={{
+                                      ".MuiInputBase-root": {
+                                        height: "40px",
+                                      },
+                                    }}
                                     className="ml-4"
                                     label="End Time"
                                     value={dayjs(field.value)}

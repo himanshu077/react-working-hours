@@ -19,7 +19,6 @@ const AddSchedule = () => {
     Record<string, IQueueAvailable>
   >({});
 
-  console.log(methods.formState.errors, "errors are here!");
   const onSubmit = (data: IAddBarber) => {
     console.log(data, "data is here!");
   };
@@ -54,9 +53,7 @@ const AddSchedule = () => {
             defaultValues={defaultValues}
             queueAvailable={queueAvailable}
             setQueueAvailable={setQueueAvailable}
-            onSubmit={(data) => {
-              console.log("Data from Schedule", data);
-            }}
+            onSubmit={onSubmit}
           />
 
           <Button type="submit" variant="contained" sx={{ mt: 2 }}>

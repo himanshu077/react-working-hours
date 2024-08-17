@@ -28,8 +28,7 @@ const validationSchema = Yup.object().shape(
     password: Yup.string()
       .optional()
       .when("password", (value) => {
-        const [actualValue] = value;
-        if (actualValue === undefined || actualValue === "") {
+        if (value === undefined || value.length === 0) {
           return Yup.string().nullable().optional();
         } else {
           return Yup.string()
@@ -38,24 +37,25 @@ const validationSchema = Yup.object().shape(
             .matches(/[A-Z]/, "At least one uppercase character!")
             .matches(
               /[a-zA-Z]+[^a-zA-Z\s]+/,
-              "At least 1 number or special character (@, !, #, etc)!."
+              "At least 1 number or special character (@, !, #, etc)!"
             );
         }
       }),
+
     confirmPassword: Yup.string()
       .optional()
-      .when("confirmPassword", (value) => {
-        const [actualValue] = value;
-        if (actualValue === undefined || actualValue === "") {
+      .when("password", (password, schema) => {
+        if (password === undefined || password.length === 0) {
           return Yup.string().nullable().optional();
         } else {
-          return Yup.string()
+          return schema
+            .oneOf([Yup.ref("password")], "Passwords must match")
             .min(8, "Password must be at least 8 characters")
             .matches(/[a-z]/, "At least one lowercase character!")
             .matches(/[A-Z]/, "At least one uppercase character!")
             .matches(
               /[a-zA-Z]+[^a-zA-Z\s]+/,
-              "At least 1 number or special character (@, !, #, etc)!."
+              "At least 1 number or special character (@, !, #, etc)!"
             );
         }
       }),
