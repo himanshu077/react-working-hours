@@ -71,7 +71,6 @@ const Profile = () => {
             render={({ field }) => {
               return (
                 <TextField
-                  autoFocus
                   label="Full Name"
                   required
                   fullWidth
