@@ -209,9 +209,20 @@ const Schedule = ({
       {allowSchedule && (
         <>
           {/* Shop Opening and Closing Time */}
-          <Box className="flex justify-between !w-full !mb-4 !mt-4">
+          <Box className="flex justify-between !w-full !mb-4 !mt-4 !ml-0">
             <FormControlLabel
-              label="Shop Opening Time"
+              label={
+                <Typography
+                  sx={{
+                    marginRight: 4,
+                  }}
+                >
+                  Shop Opening Time
+                </Typography>
+              }
+              sx={{
+                ml: 0,
+              }}
               labelPlacement="start"
               className="!w-full"
               control={
@@ -238,8 +249,21 @@ const Schedule = ({
               }
             />
             <FormControlLabel
-              label="Shop Closing Time"
-              labelPlacement="end"
+              sx={{
+                ml: 0,
+                mr: 0,
+              }}
+              label={
+                <Typography
+                  sx={{
+                    marginLeft: 4,
+                    marginRight: 4,
+                  }}
+                >
+                  Shop Closing Time
+                </Typography>
+              }
+              labelPlacement="start"
               className="!w-full"
               control={
                 <Controller
@@ -267,10 +291,16 @@ const Schedule = ({
           </Box>
           <div className="mb-5 flex items-center gap-x-4 !w-full justify-between border-[1px] border-solid border-[--border-file] !rounded-lg !px-3 !py-4 !pl-5">
             {/* All Days */}
-            <Typography>All Days</Typography>
+            <Typography
+              sx={{
+                width: 200,
+              }}
+            >
+              All Days
+            </Typography>
             <Box className="flex gap-2">
               <FormControlLabel
-                label="Start Time"
+                label={<Typography sx={{ mr: 2 }}>Start Time</Typography>}
                 labelPlacement="start"
                 control={
                   <Controller
@@ -306,7 +336,7 @@ const Schedule = ({
                 }
               />
               <FormControlLabel
-                label="End Time"
+                label={<Typography sx={{ mr: 2 }}>End Time</Typography>}
                 labelPlacement="start"
                 control={
                   <Controller
@@ -371,6 +401,7 @@ const Schedule = ({
                 <div className="flex gap-x-4 justify-between !pl-5">
                   <FormControlLabel
                     className="days-label"
+                    sx={{ width: 200 }}
                     control={
                       <Controller
                         control={control}
@@ -405,7 +436,7 @@ const Schedule = ({
                     }
                     label={getDayNameByIndex(index)}
                   />
-                  <Box className="flex gap-3">
+                  <Box className="flex gap-3" sx={{ minWidth: 480 }}>
                     <Controller
                       control={control}
                       name={`days.${index}.startTime`}
@@ -416,6 +447,7 @@ const Schedule = ({
                               height: "40px",
                             },
                           }}
+                          className="flex-1"
                           label="Start Time"
                           value={dayjs(field.value)}
                           onChange={(value) => {
@@ -450,6 +482,7 @@ const Schedule = ({
                             field.onChange(value?.toISOString());
                             validateForm();
                           }}
+                          className="flex-1"
                           // renderInput={(params) => (
                           //   <TextField
                           //     {...params}
@@ -658,10 +691,11 @@ const Schedule = ({
           </div>
 
           <div className="my-5 flex items-center gap-x-4 !w-full justify-between border-[1px] border-solid border-[--border-file] !rounded-lg !px-3 !py-4 !pl-5">
-            <Typography>Break Time</Typography>
+            <Typography sx={{ width: 200 }}>Break Time</Typography>
+
             <Box className="flex gap-2">
               <FormControlLabel
-                label="Start Time"
+                label={<Typography sx={{ mr: 2 }}>Start Time</Typography>}
                 labelPlacement="start"
                 control={
                   <Controller
@@ -703,7 +737,7 @@ const Schedule = ({
                 }
               />
               <FormControlLabel
-                label="End Time"
+                label={<Typography sx={{ mr: 2 }}>End Time</Typography>}
                 labelPlacement="start"
                 control={
                   <Controller
@@ -834,7 +868,9 @@ const Schedule = ({
 
                         <Box className="flex gap-2 !ml-36">
                           <FormControlLabel
-                            label="Start Time"
+                            label={
+                              <Typography sx={{ mr: 2 }}>Start Time</Typography>
+                            }
                             labelPlacement="start"
                             control={
                               <Controller
@@ -883,7 +919,9 @@ const Schedule = ({
                             }
                           />
                           <FormControlLabel
-                            label="End Time"
+                            label={
+                              <Typography sx={{ mr: 2 }}>End Time</Typography>
+                            }
                             labelPlacement="start"
                             control={
                               <Controller
